@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_recruitment_inherited" model="ir.ui.view">
+        <field name="name">hr_recruitment.inherited</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+        <field name="arch" type="xml">
+            <field name="type_id" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+            <!--            <group name="Talgat1" position="attributes">-->
+            <!--                <attribute name="invisible">True</attribute>-->
+            <!--            </group>-->
+            <field name="user_id" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="responsible"/>
+            </xpath>
+
+
+            <xpath expr="//field[@name='responsible']" position="after">
+                <field name="interviewer"/>
+            </xpath>
+
+            <xpath expr="//field[@name='job_id']/parent::group" position="attributes">
+                <attribute name="invisible">True</attribute>
+
+            </xpath>
+            <field name="availability" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+            <field name="salary_expected_extra" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+     <field name="salary_proposed" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+
+            <!--            <xpath expr="//field[@name='responsible']" position="after">-->
+            <!--                <field name="stage_true" invisible="1"/>-->
+            <!--            </xpath>-->
+
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page string="Personal information">
+
+                        <group>
+                            <group>
+                                <field name="sex"/>
+                                <field name="nationality"/>
+                                <field name="bdate"/>
+                            </group>
+                            <group>
+                                <field name="citizenship"/>
+                                <field name="marital_status"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Work experience">
+
+                        <group>
+                            <group>
+                                <field name="work_place"/>
+                                <field name="position"/>
+                            </group>
+                            <group>
+                                <field name="term_work"/>
+                                <field name="desc"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Education">
+                        <group>
+                            <filed name="education_uni"/>
+                            <field name="specialty"/>
+
+                            <field name="receipt_date"/>
+                            <field name="end_date"/>
+
+                        </group>
+
+                    </page>
+                    <page string="Job">
+                        <group>
+                        <filed name="department_id"/>
+
+</group>
+                    </page>
+                </notebook>
+            </xpath>
+
+        </field>
+
+    </record>
+
+
+</odoo>
