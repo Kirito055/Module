@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="absence_tree" model="ir.ui.view">
+        <field name="name">absence_views.tree</field>
+        <field name="model">absence_views</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="user"/>
+                <field name="reason"/>
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="absence_form" model="ir.ui.view">
+        <field name="name">absence_views.form</field>
+        <field name="model">absence_views</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_submit" type="object" string="Submit" state="draft" states="draft" class="oe_highlight"/>
+                    <button name="action_rejected" type="object" string="Rejected" state="submit" states="submit" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submit,rejected"/>
+                 </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="reason"/>
+                            <field name="user"/>
+                        </group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="absence_action" model="ir.actions.act_window">
+        <field name="name">Absence</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">absence_views</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                create your  absence!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="absence_root"
+              name="Absence"
+              sequence="10"/>
+
+    <menuitem id="absence_views_root"
+              name="Absence"
+              parent="absence_root"
+              sequence="10"/>
+
+    <menuitem id="test_menu"
+              name="AbsenceCREATOR"
+              action="absence_action"
+              sequence="10"/>
+
+</odoo>
