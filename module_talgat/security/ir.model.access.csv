@@ -1,2 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_module_talgat_module_talgat,module_talgat.module_talgat,model_module_talgat_module_talgat,base.group_user,1,1,1,1
